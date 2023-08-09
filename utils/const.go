@@ -1,8 +1,22 @@
 package utils
 
-const (
+import "fmt"
+
+var (
 	MainFileName    = "main.go"
-	MainFileContent = "package main\n\nfunc main() {\n\n}\n\n"
+	MainFileContent = func(year, day string) string {
+		return fmt.Sprintf(`package main
+
+const (
+	year = "%s"
+	day  = "%s"
+)
+
+func main() {
+
+}
+`, year, day)
+	}
 )
 
 const (
