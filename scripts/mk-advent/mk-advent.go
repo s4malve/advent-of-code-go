@@ -6,6 +6,8 @@ import (
 	"log"
 	"os"
 	"path"
+
+	"github.com/s4malve/advent-of-code-go/utils"
 )
 
 type Flag struct {
@@ -52,17 +54,8 @@ func main() {
 		CreateFolder("Day", dayPath)
 	}
 
-	var (
-		mainFileName    = "main.go"
-		mainFileContent = "package main\n\nfunc main() {\n\n}\n\n"
-	)
-	var (
-		inputFileName    = "input.txt"
-		inputFileContent = ""
-	)
-
-	CreateFile(mainFileName, dayPath, mainFileContent)
-	CreateFile(inputFileName, dayPath, inputFileContent)
+	CreateFile(utils.MainFileName, dayPath, utils.MainFileContent)
+	CreateFile(utils.InputFileName, dayPath, utils.InputFileContent)
 }
 
 func CreateFile(name, filePath, content string) {
