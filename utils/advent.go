@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"log"
 	"math"
 	"os"
@@ -27,6 +28,18 @@ func MaxNumber(numbers ...uint) uint {
 	}
 
 	return maxNumber
+}
+
+type AdventResult struct {
+	Year    string
+	Day     string
+	Message string
+}
+
+func PrintAdventResult(adResult AdventResult) {
+	fmt.Printf("Advent of Code %s\n", adResult.Year)
+	fmt.Printf("Day %s Solution\n", adResult.Day)
+	fmt.Println("Answer:", adResult.Message)
 }
 
 func GetFullInputPath(year, day string) string {
