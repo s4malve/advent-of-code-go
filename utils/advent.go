@@ -2,6 +2,7 @@ package utils
 
 import (
 	"log"
+	"math"
 	"os"
 	"path"
 )
@@ -16,4 +17,14 @@ func ReadInputFile(year, day string) string {
 	}
 
 	return string(bytes)
+}
+
+func MaxNumber(numbers ...uint) uint {
+	maxNumber := numbers[0]
+
+	for _, num := range numbers {
+		maxNumber = uint(math.Max(float64(maxNumber), float64(num)))
+	}
+
+	return maxNumber
 }
