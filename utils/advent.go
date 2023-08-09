@@ -28,3 +28,10 @@ func MaxNumber(numbers ...uint) uint {
 
 	return maxNumber
 }
+
+func Fatal(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
+
+}
