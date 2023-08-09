@@ -29,6 +29,11 @@ func MaxNumber(numbers ...uint) uint {
 	return maxNumber
 }
 
+func GetFullInputPath(year, day string) string {
+	cwd, _ := os.Getwd()
+	return path.Join(cwd, year, day, InputFileName)
+}
+
 func Fatal(err error) {
 	if err != nil {
 		log.Fatal(err)
