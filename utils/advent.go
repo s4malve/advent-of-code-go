@@ -88,11 +88,9 @@ func CreateFolder(name, path string) {
 }
 
 func PathExists(path string) bool {
-	if _, err := os.Stat(path); os.IsExist(err) {
-		return true
-	}
+	_, err := os.Stat(path)
 
-	return false
+	return err == nil
 }
 
 func RequireFlag(name string, value uint) {
