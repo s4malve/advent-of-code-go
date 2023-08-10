@@ -56,7 +56,7 @@ func main() {
 	utils.CreateFile(
 		utils.MainFileName,
 		dayPath,
-		utils.GetFullInputPath(fmt.Sprint(year), fmt.Sprint(day)),
+		utils.MainFileContent(fmt.Sprint(year), fmt.Sprint(day)),
 	)
 	utils.CreateFile(utils.InputFileName, dayPath, utils.InputFileContent)
 }
