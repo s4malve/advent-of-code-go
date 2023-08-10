@@ -42,9 +42,11 @@ func main() {
 	utils.RequireFlag(flagYear.LongName, year)
 	utils.RequireFlag(flagDay.LongName, day)
 
+	dayFolderName := fmt.Sprintf("%02d", day)
+	yearFolderName := fmt.Sprint(year)
 	cwd, _ := os.Getwd()
-	yearPath := path.Join(cwd, fmt.Sprint(year))
-	dayPath := path.Join(yearPath, fmt.Sprintf("%02d", day))
+	yearPath := path.Join(cwd, yearFolderName)
+	dayPath := path.Join(yearPath, dayFolderName)
 
 	if yearDirExists := utils.PathExists(yearPath); !yearDirExists {
 		utils.CreateFolder("Year", yearPath)
@@ -56,7 +58,7 @@ func main() {
 	utils.CreateFile(
 		utils.MainFileName,
 		dayPath,
-		utils.MainFileContent(fmt.Sprint(year), fmt.Sprint(day)),
+		utils.MainFileContent(yearFolderName, dayFolderName),
 	)
 	utils.CreateFile(utils.InputFileName, dayPath, utils.InputFileContent)
 }
