@@ -109,7 +109,11 @@ func ParsePartFlag() (part uint) {
 
 	flag.UintVar(&part, name, 1, usage)
 	flag.Parse()
-	utils.RequireFlag(name, part)
+	RequireFlag(name, part)
+
+	if part != 2 && part != 1 {
+		log.Fatal("The part must be 1 or 2")
+	}
 
 	return part
 }
