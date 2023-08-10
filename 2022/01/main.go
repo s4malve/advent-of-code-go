@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 
 	"github.com/s4malve/advent-of-code-go/utils"
@@ -18,7 +19,9 @@ func main() {
 	part := utils.ParsePartFlag()
 
 	if part == 1 {
-		PartOne()
+		partOne()
+	} else {
+		partTwo()
 	}
 }
 
@@ -49,7 +52,7 @@ func GetElvesCalories() []uint {
 	return totalElvesCalories
 }
 
-func PartOne() {
+func partOne() {
 	totalElvesCalories := GetElvesCalories()
 
 	utils.PrintAdventResult(utils.AdventResult{
@@ -57,5 +60,23 @@ func PartOne() {
 		Day:     day,
 		Part:    1,
 		Message: fmt.Sprintf("The highest number of calories is %d", utils.MaxNumber(totalElvesCalories...)),
+	})
+}
+
+func partTwo() {
+	totalElvesCalories := GetElvesCalories()
+
+	sort.Slice(
+		totalElvesCalories,
+		func(i, j int) bool { return totalElvesCalories[i] < totalElvesCalories[j] },
+	)
+
+	highestThreeCalories := totalElvesCalories[len(totalElvesCalories)-3:]
+
+	utils.PrintAdventResult(utils.AdventResult{
+		Year:    year,
+		Day:     day,
+		Part:    2,
+		Message: fmt.Sprintf("The sum of the three highest calories is %d", utils.MaxNumber(highestThreeCalories...)),
 	})
 }
