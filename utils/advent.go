@@ -35,11 +35,12 @@ type AdventResult struct {
 	Year    string
 	Day     string
 	Message string
+	Part    uint
 }
 
 func PrintAdventResult(adResult AdventResult) {
 	fmt.Printf("Advent of Code %s\n", adResult.Year)
-	fmt.Printf("Day %s Solution\n", adResult.Day)
+	fmt.Printf("Day %s Solution Part %d\n", adResult.Day, adResult.Part)
 	fmt.Println("Answer:", adResult.Message)
 }
 
