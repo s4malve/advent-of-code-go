@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
 	"log"
@@ -85,6 +86,16 @@ func CreateFolder(name, path string) {
 	}
 
 	fmt.Printf("%s folder created\n", name)
+}
+
+func GetInputFileScanner(year, day string) (file *os.File, fileScanner *bufio.Scanner) {
+	f, err := os.Open(GetFullInputPath(year, day))
+	Fatal(err)
+
+	fileScanner = bufio.NewScanner(f)
+	fileScanner.Split(bufio.ScanLines)
+
+	return f, fileScanner
 }
 
 func PathExists(path string) bool {

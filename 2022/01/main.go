@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"sort"
 	"strconv"
 
@@ -27,12 +25,8 @@ func main() {
 
 func GetElvesCalories() []uint {
 	var totalElvesCalories []uint
-	f, err := os.Open(utils.GetFullInputPath(year, day))
-	utils.Fatal(err)
+	f, fileScanner := utils.GetInputFileScanner(year, day)
 	defer f.Close()
-
-	fileScanner := bufio.NewScanner(f)
-	fileScanner.Split(bufio.ScanLines)
 
 	totalElveCalories := 0
 	for fileScanner.Scan() {
