@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"math"
@@ -97,4 +98,17 @@ func RequireFlag(name string, value uint) {
 	if value == 0 {
 		log.Fatalf("flag -%s or -%c is required\n", name, name[0])
 	}
+}
+
+func ParsePartFlag() (part uint) {
+	const (
+		name  = "part"
+		usage = "part of the advent, can be 1 or 2"
+	)
+
+	flag.UintVar(&part, name, 1, usage)
+	flag.Parse()
+	utils.RequireFlag(name, part)
+
+	return part
 }
