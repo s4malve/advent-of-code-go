@@ -15,6 +15,14 @@ const (
 )
 
 func main() {
+	part := utils.ParsePartFlag()
+
+	if part == 1 {
+		PartOne()
+	}
+}
+
+func GetElvesCalories() []uint {
 	var totalElvesCalories []uint
 	f, err := os.Open(utils.GetFullInputPath(year, day))
 	utils.Fatal(err)
@@ -38,9 +46,16 @@ func main() {
 		}
 	}
 
+	return totalElvesCalories
+}
+
+func PartOne() {
+	totalElvesCalories := GetElvesCalories()
+
 	utils.PrintAdventResult(utils.AdventResult{
 		Year:    year,
 		Day:     day,
 		Message: fmt.Sprintf("The highest number of calories is %d", utils.MaxNumber(totalElvesCalories...)),
 	})
+
 }
