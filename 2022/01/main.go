@@ -55,7 +55,7 @@ func PartOne() {
 	utils.PrintAdventResult(utils.AdventResult{
 		Year:    year,
 		Day:     day,
+		Part:    1,
 		Message: fmt.Sprintf("The highest number of calories is %d", utils.MaxNumber(totalElvesCalories...)),
 	})
-
 }
