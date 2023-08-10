@@ -13,7 +13,20 @@ const (
 )
 
 func main() {
+	part := utils.ParsePartFlag()
 
+	if part == 1 {
+		partOne()
+	} else {
+		partTwo()
+	}
+
+}
+
+func partOne()  {
+}
+
+func partTwo()  {
 }
 `, year, day)
 	}
