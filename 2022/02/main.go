@@ -117,5 +117,46 @@ func partOne() {
 	})
 }
 
+func getYourShape(roundState, opponentShape string) (yourShape string) {
+
+	switch roundState {
+	case "draw":
+		{
+			return opponentShape
+		}
+	case "win":
+		{
+			return WINNER_SHAPES[opponentShape]
+		}
+	default:
+		{
+			return LOOSER_SHAPES[opponentShape]
+		}
+	}
+}
+
 func partTwo() {
+	f, fileScanner := utils.GetInputFileScanner(year, day)
+	defer f.Close()
+
+	totalScore := 0
+	for fileScanner.Scan() {
+		txt := fileScanner.Text()
+		opponentLetter, roundLetter := getLetters(txt)
+
+		roundState := ROUND_LETTERS[roundLetter]
+		opponentShape := OPONENT_LETTERS[opponentLetter]
+		yourShape := getYourShape(roundState, opponentShape)
+
+		roundScore := getRoundScore(roundState, yourShape)
+
+		totalScore += roundScore
+	}
+
+	utils.PrintAdventResult(utils.AdventResult{
+		Year:    year,
+		Day:     day,
+		Message: fmt.Sprintf("the total score is %d", totalScore),
+		Part:    2,
+	})
 }
