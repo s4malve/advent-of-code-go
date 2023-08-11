@@ -90,6 +90,11 @@ func getRoundScore(roundState, yourShape string) int {
 	return shapeScore + roundScore
 }
 
+func getLetters(txt string) (firstLetter, secondLetter string) {
+	round := strings.Split(txt, " ")
+	return round[0], round[1]
+}
+
 func partOne() {
 	f, fileScanner := utils.GetInputFileScanner(year, day)
 	defer f.Close()
