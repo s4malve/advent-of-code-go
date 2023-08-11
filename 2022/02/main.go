@@ -83,10 +83,7 @@ func getRoundState(opponentLetter, yourLetter string) (roundState string) {
 	}
 }
 
-func getRoundScore(opponentLetter, yourLetter string) int {
-	roundState := getRoundState(opponentLetter, yourLetter)
-	yourShape := YOUR_LETTERS[yourLetter]
-
+func getRoundScore(roundState, yourShape string) int {
 	shapeScore := SHAPE_SCORE[yourShape]
 	roundScore := ROUND_SCORE[roundState]
 
@@ -100,10 +97,10 @@ func partOne() {
 	totalScore := 0
 	for fileScanner.Scan() {
 		txt := fileScanner.Text()
-		round := strings.Split(txt, " ")
-		oponentLetter := round[0]
-		yourLetter := round[1]
-		roundScore := getRoundScore(oponentLetter, yourLetter)
+		opponentLetter, yourLetter := getLetters(txt)
+		roundState := getRoundState(opponentLetter, yourLetter)
+		yourShape := YOUR_LETTERS[yourLetter]
+		roundScore := getRoundScore(roundState, yourShape)
 		totalScore += roundScore
 	}
 
