@@ -23,6 +23,24 @@ var (
 		"Y": "paper",
 		"Z": "scissors",
 	}
+	ROUND_LETTERS = map[string]string{
+		"X": "lose",
+		"Y": "draw",
+		"Z": "win",
+	}
+)
+
+var (
+	LOOSER_SHAPES = map[string]string{
+		"rock":     "scissors",
+		"scissors": "paper",
+		"paper":    "rock",
+	}
+	WINNER_SHAPES = map[string]string{
+		"scissors": "rock",
+		"paper":    "scissors",
+		"rock":     "paper",
+	}
 )
 
 var (
